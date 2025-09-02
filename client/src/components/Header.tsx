@@ -58,7 +58,7 @@ export default function Header() {
             </li>
             <li>
               <a 
-                href="#" 
+                href="/services" 
                 className="text-muted-foreground hover:text-primary transition-colors font-medium"
                 data-testid="link-services"
               >
@@ -125,7 +125,7 @@ export default function Header() {
             </li>
             <li>
               <a 
-                href="#" 
+                href="/services" 
                 className="block px-4 py-2 text-muted-foreground hover:bg-muted rounded-lg font-medium"
                 data-testid="link-mobile-services"
               >
