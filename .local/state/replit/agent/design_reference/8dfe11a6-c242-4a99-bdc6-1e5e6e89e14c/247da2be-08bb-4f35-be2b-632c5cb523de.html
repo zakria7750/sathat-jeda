@@ -1,0 +1,342 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="سطحة جدة - خدمة سحب السيارات المتنقلة 24 ساعة في جدة. نقل المركبات ومساعدة على الطريق بأسعار مناسبة وخدمة سريعة.">
+    <meta name="keywords" content="سطحة جدة, سحب السيارات, نقل المركبات, مساعدة طريق, سطحة متنقلة, جدة">
+    <meta name="author" content="سطحة جدة">
+    <title>سطحة جدة - خدمة سحب السيارات المتنقلة 24 ساعة</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    colors: {
+                        background: "var(--background)",
+                        foreground: "var(--foreground)",
+                        card: {
+                            DEFAULT: "var(--card)",
+                            foreground: "var(--card-foreground)",
+                        },
+                        popover: {
+                            DEFAULT: "var(--popover)",
+                            foreground: "var(--popover-foreground)",
+                        },
+                        primary: {
+                            DEFAULT: "var(--primary)",
+                            foreground: "var(--primary-foreground)",
+                        },
+                        secondary: {
+                            DEFAULT: "var(--secondary)",
+                            foreground: "var(--secondary-foreground)",
+                        },
+                        muted: {
+                            DEFAULT: "var(--muted)",
+                            foreground: "var(--muted-foreground)",
+                        },
+                        accent: {
+                            DEFAULT: "var(--accent)",
+                            foreground: "var(--accent-foreground)",
+                        },
+                        destructive: {
+                            DEFAULT: "var(--destructive)",
+                            foreground: "var(--destructive-foreground)",
+                        },
+                        border: "var(--border)",
+                        input: "var(--input)",
+                        ring: "var(--ring)",
+                    },
+                    fontFamily: {
+                        sans: ["var(--font-sans)"],
+                        serif: ["var(--font-serif)"],
+                        mono: ["var(--font-mono)"],
+                    }
+                },
+            }
+        };
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: hsl(210 40% 98%);
+            --foreground: hsl(222.2 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222.2 84% 4.9%);
+            --popover: hsl(0 0% 100%);
+            --popover-foreground: hsl(222.2 84% 4.9%);
+            --primary: hsl(214 100% 27%);
+            --primary-foreground: hsl(210 40% 98%);
+            --secondary: hsl(210 40% 96%);
+            --secondary-foreground: hsl(222.2 84% 4.9%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215.4 16.3% 46.9%);
+            --accent: hsl(22 100% 52%);
+            --accent-foreground: hsl(210 40% 98%);
+            --destructive: hsl(0 84.2% 60.2%);
+            --destructive-foreground: hsl(210 40% 98%);
+            --border: hsl(214.3 31.8% 91.4%);
+            --input: hsl(214.3 31.8% 91.4%);
+            --ring: hsl(214 100% 27%);
+            --radius: 0.75rem;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(249, 115, 22, 0.8) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- @COMPONENT: Header [Fixed navigation with logo and mobile menu] -->
+    <header class="fixed top-0 w-full bg-card shadow-lg z-50 border-b border-border">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between py-4">
+                <!-- Logo and Brand -->
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-truck text-primary-foreground text-xl"></i>
+                    </div>
+                    <div class="text-xl font-bold text-primary">سطحة جدة</div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex space-x-8 space-x-reverse">
+                    <li><a href="#" class="text-foreground hover:text-primary transition-colors font-medium">الرئيسية</a></li>
+                    <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors font-medium">من نحن</a></li>
+                    <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors font-medium">خدماتنا</a></li>
+                    <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors font-medium">المدونة</a></li>
+                    <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors font-medium">تواصل معنا</a></li>
+                </ul>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-muted transition-colors" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl text-foreground"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-card border-t border-border">
+                <ul class="py-4 space-y-2">
+                    <li><a href="#" class="block px-4 py-2 text-foreground hover:bg-muted rounded-lg font-medium">الرئيسية</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-muted-foreground hover:bg-muted rounded-lg font-medium">من نحن</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-muted-foreground hover:bg-muted rounded-lg font-medium">خدماتنا</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-muted-foreground hover:bg-muted rounded-lg font-medium">المدونة</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-muted-foreground hover:bg-muted rounded-lg font-medium">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+    
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- @COMPONENT: HeroSection [Hero banner with CTA and background image] -->
+        <section class="relative min-h-screen flex items-center justify-center">
+            <!-- Professional tow truck providing roadside assistance service -->
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080');"></div>
+            <div class="absolute inset-0 hero-overlay"></div>
+            
+            <div class="relative z-10 container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    سطحة جدة المتنقلة
+                    <span class="block text-accent">خدمة 24 ساعة</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    خدمة سحب ونقل السيارات الأسرع والأوثق في جدة. نصل إليك في أي مكان وأي وقت بفريق محترف ومعدات حديثة
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="tel:+966500000000" class="inline-flex items-center bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-phone ml-3"></i>
+                        اتصل الآن - خدمة فورية
+                    </a>
+                    <a href="https://wa.me/966500000000" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
+                        <i class="fab fa-whatsapp ml-3"></i>
+                        واتساب
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: HeroSection -->
+        
+        <!-- @COMPONENT: ServicesSection [Services showcase with image cards] -->
+        <section class="py-20 bg-muted/30">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">خدماتنا المتميزة</h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                        نقدم مجموعة شاملة من خدمات سحب ونقل السيارات بأعلى معايير الجودة والأمان في جدة والمناطق المحيطة
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <!-- Tow truck pulling a broken down car on the road -->
+                        <img src="https://pixabay.com/get/gaae5cb50bd3b90f698970fbfdd6096c83ae2d568653e38ee68f38f3f6d23523cf1082499a978a6d6c2c7d651ca2d697747cb67bf2919e9eaee7db334cd65374b_1280.jpg" alt="سحب السيارات" class="w-full h-48 object-cover" />
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center ml-4">
+                                    <i class="fas fa-car-crash text-primary text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground">سحب السيارات</h3>
+                            </div>
+                            <p class="text-muted-foreground leading-relaxed">
+                                خدمة سحب السيارات المعطلة والمتضررة بأحدث المعدات وأعلى معايير الأمان للحفاظ على سيارتك
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Card 2 -->
+                    <div class="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <!-- Large transport truck carrying multiple vehicles -->
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="نقل المركبات" class="w-full h-48 object-cover" />
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center ml-4">
+                                    <i class="fas fa-truck-moving text-primary text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground">نقل المركبات</h3>
+                            </div>
+                            <p class="text-muted-foreground leading-relaxed">
+                                نقل آمن وسريع للمركبات الجديدة والمستعملة داخل وخارج جدة بأسطول حديث ومؤمن بالكامل
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Card 3 -->
+                    <div class="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <!-- Roadside assistance mechanic helping stranded motorist -->
+                        <img src="https://images.unsplash.com/photo-1486754735734-325b5831c3ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="مساعدة على الطريق" class="w-full h-48 object-cover" />
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center ml-4">
+                                    <i class="fas fa-tools text-primary text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-foreground">مساعدة على الطريق</h3>
+                            </div>
+                            <p class="text-muted-foreground leading-relaxed">
+                                خدمات الطوارئ والمساعدة الفورية على الطريق: تشغيل البطارية، تغيير الإطارات، وتوصيل الوقود
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Features -->
+                <div class="mt-16 bg-primary/5 rounded-2xl p-8">
+                    <div class="grid md:grid-cols-4 gap-8 text-center">
+                        <div class="space-y-3">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto">
+                                <i class="fas fa-clock text-white text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-foreground">خدمة 24/7</h4>
+                            <p class="text-sm text-muted-foreground">متوفرون في أي وقت</p>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto">
+                                <i class="fas fa-shield-alt text-white text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-foreground">مؤمن بالكامل</h4>
+                            <p class="text-sm text-muted-foreground">حماية شاملة لسيارتك</p>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto">
+                                <i class="fas fa-tachometer-alt text-white text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-foreground">وصول سريع</h4>
+                            <p class="text-sm text-muted-foreground">نصل في أقل من 30 دقيقة</p>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto">
+                                <i class="fas fa-star text-white text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-foreground">خدمة متميزة</h4>
+                            <p class="text-sm text-muted-foreground">فريق محترف ومدرب</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: ServicesSection -->
+        
+        <!-- @COMPONENT: ContactCTASection [Call-to-action section] -->
+        <section class="py-20 bg-primary">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
+                    هل تحتاج مساعدة على الطريق؟
+                </h2>
+                <p class="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+                    لا تتردد في الاتصال بنا. فريقنا جاهز لخدمتك في أي وقت وأي مكان في جدة
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="tel:+966500000000" class="inline-flex items-center bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-phone ml-3"></i>
+                        +966 50 000 0000
+                    </a>
+                    <a href="https://wa.me/966500000000" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg">
+                        <i class="fab fa-whatsapp ml-3"></i>
+                        تواصل عبر واتساب
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: ContactCTASection -->
+    </main>
+    
+    <!-- @COMPONENT: FixedContactBar [Fixed bottom contact icons] -->
+    <div class="fixed bottom-0 left-0 right-0 bg-card shadow-lg border-t border-border z-40">
+        <div class="flex">
+            <a href="tel:+966500000000" class="flex-1 flex items-center justify-center py-4 bg-accent hover:bg-accent/90 text-accent-foreground transition-colors">
+                <i class="fas fa-phone text-xl ml-2"></i>
+                <span class="font-bold">اتصال مباشر</span>
+            </a>
+            <a href="https://wa.me/966500000000" class="flex-1 flex items-center justify-center py-4 bg-green-600 hover:bg-green-700 text-white transition-colors">
+                <i class="fab fa-whatsapp text-xl ml-2"></i>
+                <span class="font-bold">واتساب</span>
+            </a>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: FixedContactBar -->
+    
+    <!-- Add bottom padding to account for fixed contact bar -->
+    <div class="h-16"></div>
+    
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuButton = event.target.closest('button');
+            
+            if (!menuButton && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.remove('open');
+            }
+        });
+        
+        // TODO: Implement business logic for contact form submissions
+        // TODO: Add analytics tracking for user interactions
+        // TODO: Implement service area coverage map
+        // TODO: Add customer testimonials and reviews section
+    </script>
+</body>
+</html>
