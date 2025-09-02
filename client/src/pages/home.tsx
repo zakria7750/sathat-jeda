@@ -4,7 +4,8 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import FixedContactBar from "@/components/FixedContactBar";
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Phone, Users, BookOpen, MessageCircle, ArrowLeft, Clock, Shield, Award } from "lucide-react";
 import { updatePageSEO } from "@/lib/seo";
 
 export default function Home() {
@@ -14,6 +15,60 @@ export default function Home() {
       "خدمة سحب ونقل السيارات الأسرع والأوثق في جدة. نصل إليك في أي مكان وأي وقت بفريق محترف ومعدات حديثة"
     );
   }, []);
+
+  const pagesSummary = [
+    {
+      id: 1,
+      title: "من نحن",
+      description: "تعرف على قصة سطحة جدة وخبرتنا التي تزيد عن 10 سنوات في خدمة عملاء جدة بأعلى معايير الاحترافية والجودة",
+      icon: Users,
+      link: "/about",
+      features: ["خبرة +10 سنوات", "فريق محترف", "خدمة موثوقة"]
+    },
+    {
+      id: 2,
+      title: "خدماتنا",
+      description: "خدمات شاملة لنقل السيارات والمساعدة على الطريق، من الحالات الطارئة إلى النقل للمسافات الطويلة بين المدن",
+      icon: Shield,
+      link: "/services",
+      features: ["نقل آمن", "خدمة 24/7", "معدات حديثة"]
+    },
+    {
+      id: 3,
+      title: "المدونة",
+      description: "نصائح مفيدة وأحدث المقالات حول صيانة السيارات والسلامة على الطريق من خبراء سطحة جدة",
+      icon: BookOpen,
+      link: "/blog",
+      features: ["نصائح الخبراء", "دليل الصيانة", "السلامة على الطريق"]
+    },
+    {
+      id: 4,
+      title: "تواصل معنا",
+      description: "عدة طرق للوصول إلينا في أي وقت - هاتف، واتساب، أو نموذج تواصل مباشر للحصول على خدمة سريعة",
+      icon: MessageCircle,
+      link: "/contact",
+      features: ["استجابة فورية", "متعدد الطرق", "خدمة عملاء ممتازة"]
+    }
+  ];
+
+  const whyChooseUs = [
+    {
+      icon: Clock,
+      title: "خدمة 24/7",
+      description: "متاحون في أي وقت لمساعدتك"
+    },
+    {
+      icon: Shield,
+      title: "مؤمن بالكامل",
+      description: "حماية شاملة لسيارتك"
+    },
+    {
+      icon: Award,
+      title: "خبرة موثقة",
+      description: "أكثر من 10 سنوات في الخدمة"
+    }
+  ];
+
   const handlePhoneCall = () => {
     window.location.href = "tel:+966500000000";
   };
@@ -30,6 +85,96 @@ export default function Home() {
       <main className="pt-20">
         <HeroSection />
         <ServicesSection />
+        
+        {/* Pages Overview Section */}
+        <section className="py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 font-arabic" data-testid="text-pages-overview-title">
+                استكشف موقعنا
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-arabic" data-testid="text-pages-overview-description">
+                تعرف على جميع خدماتنا ومعلوماتنا المفصلة لتحصل على أفضل تجربة مع سطحة جدة
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {pagesSummary.map((page) => {
+                const IconComponent = page.icon;
+                return (
+                  <Card 
+                    key={page.id}
+                    className="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                    data-testid={`card-page-overview-${page.id}`}
+                  >
+                    <CardContent className="p-6">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <IconComponent className="text-primary w-6 h-6" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-3 font-arabic" data-testid={`text-page-title-${page.id}`}>
+                        {page.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed font-arabic mb-4" data-testid={`text-page-description-${page.id}`}>
+                        {page.description}
+                      </p>
+                      <div className="space-y-2 mb-4">
+                        {page.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center text-sm">
+                            <div className="w-2 h-2 bg-accent rounded-full ml-2" />
+                            <span className="text-foreground font-arabic" data-testid={`text-page-feature-${page.id}-${idx}`}>
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      <a 
+                        href={page.link}
+                        className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors font-arabic"
+                        data-testid={`link-page-${page.id}`}
+                      >
+                        اعرف المزيد
+                        <ArrowLeft className="mr-2 w-4 h-4" />
+                      </a>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us Section */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 font-arabic" data-testid="text-why-choose-title">
+                لماذا تختار سطحة جدة؟
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-arabic" data-testid="text-why-choose-description">
+                نتميز بالخبرة الطويلة والخدمة المتميزة التي جعلتنا الخيار الأول للعملاء في جدة
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {whyChooseUs.map((reason, index) => {
+                const IconComponent = reason.icon;
+                return (
+                  <div key={index} className="text-center" data-testid={`why-choose-${index}`}>
+                    <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                      <IconComponent className="text-white w-10 h-10" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-3 font-arabic" data-testid={`text-why-choose-title-${index}`}>
+                      {reason.title}
+                    </h3>
+                    <p className="text-muted-foreground font-arabic" data-testid={`text-why-choose-description-${index}`}>
+                      {reason.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
         
         {/* Contact CTA Section */}
         <section className="py-20 bg-primary">
