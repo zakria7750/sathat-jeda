@@ -1,11 +1,19 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import FixedContactBar from "@/components/FixedContactBar";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
+import { updatePageSEO } from "@/lib/seo";
 
 export default function Home() {
+  useEffect(() => {
+    updatePageSEO(
+      "سطحة جدة - خدمة سحب السيارات المتنقلة 24 ساعة",
+      "خدمة سحب ونقل السيارات الأسرع والأوثق في جدة. نصل إليك في أي مكان وأي وقت بفريق محترف ومعدات حديثة"
+    );
+  }, []);
   const handlePhoneCall = () => {
     window.location.href = "tel:+966500000000";
   };
